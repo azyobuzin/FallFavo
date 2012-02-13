@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceScreen android:key="account">
+        <intent android:action="android.intent.action.MAIN"
+            android:targetPackage="net.azyobuzi.fallfavo"
+            android:targetClass="net.azyobuzi.fallfavo.LoginActivity"/>
+    </PreferenceScreen>
+    <EditTextPreference android:title="@string/num_of_simultaneous_running"
+         android:summary="@string/num_of_simultaneous_running_2"
+         android:key="simultaneousRunning"
+         android:numeric="integer" />
+    <PreferenceScreen android:title="@string/ignore_setting"
+        android:summary="@string/ignore_setting_2">
+        <intent android:action="android.intent.action.MAIN"
+            android:targetPackage="net.azyobuzi.fallfavo"
+            android:targetClass="net.azyobuzi.fallfavo.IgnoreSettingActivity"/>
+    </PreferenceScreen>
+</PreferenceScreen>

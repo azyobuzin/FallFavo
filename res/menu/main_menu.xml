@@ -1,0 +1,6 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/m_setting" android:title="@string/setting" android:icon="@android:drawable/ic_menu_preferences"></item>
+    <item android:id="@+id/m_release" android:title="@string/release_fav" android:icon="@android:drawable/ic_menu_send" android:showAsAction="ifRoom"></item>
+    <item android:id="@+id/m_clear_all" android:title="@string/clear_all" android:icon="@android:drawable/ic_menu_close_clear_cancel"></item>
+    <item android:id="@+id/m_about" android:icon="@android:drawable/ic_menu_info_details" android:title="@string/about"></item>
+</menu>

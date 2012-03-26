@@ -1,11 +1,13 @@
 package net.azyobuzi.fallfavo;
 
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.MenuItem;
+
 import net.azyobuzi.fallfavo.util.Action1;
 import net.azyobuzi.fallfavo.util.StringUtil;
 import twitter4j.Twitter;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -13,11 +15,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends SherlockActivity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -64,20 +65,16 @@ public class LoginActivity extends Activity {
 			}
 		});
 
-		if (android.os.Build.VERSION.SDK_INT >= 11) {
-			getActionBar().setDisplayHomeAsUpEnabled(true);
-		}
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		if (android.os.Build.VERSION.SDK_INT >= 11) {
-			if (item.getItemId() == android.R.id.home) {
-				finish();
-				return true;
-			}
+		if (item.getItemId() == android.R.id.home) {
+			finish();
+			return true;
 		}
-		
+
 		return super.onOptionsItemSelected(item);
 	}
 

@@ -1,24 +1,25 @@
 package net.azyobuzi.fallfavo;
 
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+
 import net.azyobuzi.fallfavo.util.Action;
 import net.azyobuzi.fallfavo.util.StringUtil;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.ContextMenu;
-import android.view.Menu;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class MainPageActivity extends Activity {
+public class MainPageActivity extends SherlockActivity {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -88,7 +89,7 @@ public class MainPageActivity extends Activity {
 		menu.setHeaderTitle(R.string.tweet);
     	menu.add(R.string.open_tweet).setOnMenuItemClickListener(new OnMenuItemClickListener() {
 			@Override
-			public boolean onMenuItemClick(MenuItem arg0) {
+			public boolean onMenuItemClick(android.view.MenuItem arg0) {
 				startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(
 					"http://twitter.com/" + item.screenName + "/status/" + item.id
 				)));
@@ -97,7 +98,7 @@ public class MainPageActivity extends Activity {
     	});
     	menu.add(R.string.remove).setOnMenuItemClickListener(new OnMenuItemClickListener() {
 			@Override
-			public boolean onMenuItemClick(MenuItem arg0) {
+			public boolean onMenuItemClick(android.view.MenuItem arg0) {
 				try {
 					QueueManager.remove(item);
 				} catch (Exception ex) {
@@ -113,7 +114,7 @@ public class MainPageActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
     	this.menu = menu;
-    	getMenuInflater().inflate(R.menu.main_menu, menu);
+    	getSupportMenuInflater().inflate(R.menu.main_menu, menu);
     	accessTokenChangedAction.Invoke();
     	isReleasingChangedAction.Invoke();
     	return true;

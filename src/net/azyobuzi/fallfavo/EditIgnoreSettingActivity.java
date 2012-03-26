@@ -1,31 +1,32 @@
 package net.azyobuzi.fallfavo;
 
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.MenuItem;
+
 import net.azyobuzi.fallfavo.IgnoreSetting.IgnoreSettingItem;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 
-public class EditIgnoreSettingActivity extends Activity {
+public class EditIgnoreSettingActivity extends SherlockActivity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.edit_ignore_setting_page);
-		
+
 		final EditText statusCode = (EditText)findViewById(R.id.txt_status_code);
 		final EditText content = (EditText)findViewById(R.id.txt_content);
-		
+
 		int index = getIntent().getIntExtra("index", -1);
 		if (index >= 0) {
 			target = IgnoreSetting.getItems().get(index);
 			statusCode.setText(String.valueOf(target.statusCode));
 			content.setText(target.mustContainText);
 		}
-		
+
 		findViewById(R.id.btn_edit_ok).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -52,20 +53,16 @@ public class EditIgnoreSettingActivity extends Activity {
 			}
 		});
 
-		if (android.os.Build.VERSION.SDK_INT >= 11) {
-			getActionBar().setDisplayHomeAsUpEnabled(true);
-		}
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
 	private IgnoreSettingItem target;
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		if (android.os.Build.VERSION.SDK_INT >= 11) {
-			if (item.getItemId() == android.R.id.home) {
-				finish();
-				return true;
-			}
+		if (item.getItemId() == android.R.id.home) {
+			finish();
+			return true;
 		}
 
 		return super.onOptionsItemSelected(item);

@@ -1,13 +1,14 @@
 package net.azyobuzi.fallfavo;
 
+import com.actionbarsherlock.app.SherlockPreferenceActivity;
+import com.actionbarsherlock.view.MenuItem;
+
 import net.azyobuzi.fallfavo.util.Action;
 import net.azyobuzi.fallfavo.util.StringUtil;
 import android.os.Bundle;
 import android.preference.Preference;
-import android.preference.PreferenceActivity;
-import android.view.MenuItem;
 
-public class SettingActivity extends PreferenceActivity {
+public class SettingActivity extends SherlockPreferenceActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -17,9 +18,7 @@ public class SettingActivity extends PreferenceActivity {
 		Setting.accessTokenSecretChangedHandler.add(accessTokenChanged);
 		accessTokenChanged.Invoke();
 		
-		if (android.os.Build.VERSION.SDK_INT >= 11) {
-			getActionBar().setDisplayHomeAsUpEnabled(true);
-		}
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 	
 	@Override
@@ -46,11 +45,9 @@ public class SettingActivity extends PreferenceActivity {
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		if (android.os.Build.VERSION.SDK_INT >= 11) {
-			if (item.getItemId() == android.R.id.home) {
-				finish();
-				return true;
-			}
+		if (item.getItemId() == android.R.id.home) {
+			finish();
+			return true;
 		}
 		
 		return super.onOptionsItemSelected(item);

@@ -30,7 +30,7 @@ public class QueueManager {
 				stream.close();
 				String content = new String(bs, "UTF-8");
 				String[] split = content.split("\n" + separator + "\n");
-				for (int i = 0; i < split.length - 1; i += 3) {
+				for (int i = 0; i < split.length; i += 3) {
 					Tweet t = new Tweet();
 					t.id = split[i];
 					t.screenName = split[i + 1];
@@ -86,6 +86,21 @@ public class QueueManager {
 		}
 	}
 
+	public static void addRange(Collection<Tweet> tweets) throws IOException {
+		FileOutputStream stream = FallFavoApplication.getInstance().openFileOutput(queueFile, Context.MODE_WORLD_READABLE | Context.MODE_APPEND);
+		StringBuilder sb = new StringBuilder();
+		for (Tweet t : tweets) {
+			sb.append(tweetToString(t));
+		}
+		stream.write(sb.toString().getBytes("UTF-8"));
+		stream.close();
+
+		if (m_queue != null) {
+			m_queue.addAll(tweets);
+			raiseQueueChanged();
+		}
+	}
+
 	public static void remove(Tweet t) throws IOException {
 		@SuppressWarnings("unchecked")
 		ArrayList<Tweet> copied = (ArrayList<Tweet>)getQueue().clone();
@@ -120,7 +135,7 @@ public class QueueManager {
 		}
 		raiseQueueChanged();
 	}
-	
+
 	public static void clear() {
 		FallFavoApplication.getInstance().deleteFile(queueFile);
 		m_queue = null;

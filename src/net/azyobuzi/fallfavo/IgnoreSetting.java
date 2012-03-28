@@ -41,6 +41,7 @@ public class IgnoreSetting {
 					items.add(new IgnoreSettingItem(item.getInt("statusCode"), item.getString("mustContainText")));
 				}
 			} catch (Exception ex) {
+				ex.printStackTrace();
 				setDefaultValue();
 			}
 		}
@@ -54,7 +55,7 @@ public class IgnoreSetting {
 			items.clear();
 
 		items.add(new IgnoreSettingItem(403, "You have already favorited this status"));
-		items.add(new IgnoreSettingItem(404, null));
+		items.add(new IgnoreSettingItem(404, ""));
 		save();
 		raiseChanged();
 	}
@@ -72,7 +73,9 @@ public class IgnoreSetting {
 			FileOutputStream stream = FallFavoApplication.getInstance().openFileOutput(settingFile, Context.MODE_PRIVATE);
 			stream.write(jarray.toString().getBytes("UTF-8"));
 			stream.close();
-		} catch (Exception ex) { /*なかったことにしよう*/ }
+		} catch (Exception ex) {
+			ex.printStackTrace(); //なかったことにしよう
+		}
 	}
 
 	public static void add(int statusCode, String mustContainText) {

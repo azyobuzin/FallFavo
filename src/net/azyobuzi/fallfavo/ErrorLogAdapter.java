@@ -35,7 +35,18 @@ public class ErrorLogAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		View re = ctx.getLayoutInflater().inflate(R.layout.listview_item, null);
+		View re = convertView == null
+			? ctx.getLayoutInflater().inflate(R.layout.listview_item, null)
+			: convertView;
+
+		ViewHolder viewHolder = (ViewHolder)re.getTag();
+		if (viewHolder == null) {
+			viewHolder = new ViewHolder();
+			viewHolder.header = (TextView)re.findViewById(R.id.tv_header);
+			viewHolder.content = (TextView)re.findViewById(R.id.tv_content);
+			re.setTag(viewHolder);
+		}
+
 		@SuppressWarnings("unchecked")
 		Tuple2<Tweet, Exception> item = (Tuple2<Tweet, Exception>)getItem(position);
 		if (item != null) {
@@ -47,10 +58,14 @@ public class ErrorLogAdapter extends BaseAdapter {
 			} else {
 				content = item.Item2.getClass().getSimpleName() + ": " + item.Item2.getMessage();
 			}
-			((TextView)re.findViewById(R.id.tv_header)).setText(item.Item1.screenName + ": " + item.Item1.text);
-			((TextView)re.findViewById(R.id.tv_content)).setText(content);
+			viewHolder.header.setText(item.Item1.screenName + ": " + item.Item1.text);
+			viewHolder.content.setText(content);
 		}
 		return re;
 	}
 
+	private static class ViewHolder {
+		public TextView header;
+		public TextView content;
+	}
 }

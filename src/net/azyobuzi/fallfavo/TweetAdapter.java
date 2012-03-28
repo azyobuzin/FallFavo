@@ -40,12 +40,28 @@ public class TweetAdapter extends BaseAdapter {
 	@Override
 	public View getView(int arg0, View arg1, ViewGroup arg2) {
 		Tweet item = getTweetItem(arg0);
-		View re = ctx.getLayoutInflater().inflate(R.layout.listview_item, null);
+		View re = arg1 == null
+			? ctx.getLayoutInflater().inflate(R.layout.listview_item, null)
+			: arg1;
+
+		ViewHolder viewHolder = (ViewHolder)re.getTag();
+		if (viewHolder == null) {
+			viewHolder = new ViewHolder();
+			viewHolder.header = (TextView)re.findViewById(R.id.tv_header);
+			viewHolder.content = (TextView)re.findViewById(R.id.tv_content);
+			re.setTag(viewHolder);
+		}
+
 		if (item != null) {
-			((TextView)re.findViewById(R.id.tv_header)).setText(item.screenName);
-			((TextView)re.findViewById(R.id.tv_content)).setText(StringUtil.isNullOrEmpty(item.text) ? item.id : item.text);
+			viewHolder.header.setText(item.screenName);
+			viewHolder.content.setText(StringUtil.isNullOrEmpty(item.text) ? item.id : item.text);
 		}
 		return re;
+	}
+
+	private static class ViewHolder {
+		public TextView header;
+		public TextView content;
 	}
 
 }

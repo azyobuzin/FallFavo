@@ -36,15 +36,30 @@ public class IgnoreSettingAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int arg0, View arg1, ViewGroup arg2) {
-		View re = ctx.getLayoutInflater().inflate(R.layout.ignore_setting_listview_item, null);
+		View re = arg1 == null
+			? ctx.getLayoutInflater().inflate(R.layout.ignore_setting_listview_item, null)
+			: arg1;
+
+		ViewHolder viewHolder = (ViewHolder)re.getTag();
+		if (viewHolder == null) {
+			viewHolder = new ViewHolder();
+			viewHolder.statusCode = (TextView)re.findViewById(R.id.tv_status_code);
+			viewHolder.mustContain = (TextView)re.findViewById(R.id.tv_must_contain);
+			re.setTag(viewHolder);
+		}
+
 		IgnoreSettingItem item = getIgnoreSettingItem(arg0);
 		if (item != null) {
-			((TextView)re.findViewById(R.id.tv_status_code)).setText(String.valueOf(item.statusCode));
-			((TextView)re.findViewById(R.id.tv_must_contain)).setText(
+			viewHolder.statusCode.setText(String.valueOf(item.statusCode));
+			viewHolder.mustContain.setText(
 				StringUtil.isNullOrEmpty(item.mustContainText) ? ctx.getText(R.string.nothing) : item.mustContainText
 			);
 		}
 		return re;
 	}
 
+	private static class ViewHolder {
+		public TextView statusCode;
+		public TextView mustContain;
+	}
 }

@@ -1,0 +1,16 @@
+﻿@media (min-width: 980px) {
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+}
+.ad {
+  margin-bottom: 10px;
+  text-align: center;
+}
+h2 {
+  margin-top: 20px;
+}
+h1.bigtitle {
+  font-size: 54px;
+}

@@ -1,74 +1,96 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="ja">
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Fallfavo : Android向けふぁぼキュー" />
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Fallfavo</title>
+    <meta charset="utf-8">
+    <title>FallFavo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
+    <link href="main.css" rel="stylesheet" type="text/css">
   </head>
-
   <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/azyobuzin/FallFavo">View on GitHub</a>
-
-          <h1 id="project_title">Fallfavo</h1>
-          <h2 id="project_tagline">Android向けふぁぼキュー</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/azyobuzin/FallFavo/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/azyobuzin/FallFavo/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+    <header class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">FallFavo</a>
+        </div>
+      </div>
+    </header>
+    
+    <div class="container">
+      <h1 class="bigtitle">
+        <img src="img/ic_launcher.png" width="60" height="60" alt="アイコン">FallFavo
+        <small>Android向けふぁぼキュー</small>
+      </h1>
+      
+      <div style="margin-top:15px;text-size:x-small;"><a href="#download">↓ダウンロード</a></div>
+      
+      <section>
+        <h2>なにこれ</h2>
+        <p>Android2.2以上で動くふぁぼキューです。後は察してください。</p>
+      </section>
+      
+      <section>
+        <h2>使用用途は？</h2>
+        <p>人それぞれです！！</p>
+        <p>例を挙げるとすると<a href="http://shootingstar067.com/">ShootingStar</a>の経験値ためたいけれど3GだからUserStream使えない！ というときに最適！！</p>
+      </section>
+      
+      <section>
+        <h2>機能</h2>
+        <ul>
+          <li>
+            インテントで飛ばされてきたツイートを拾ってキューに追加します。<br>以下のクライアントの共有機能に対応しています（順不同）。
+            <ul>
+              <li><a href="https://play.google.com/store/apps/details?id=com.studiohitori.twitrocker2">TwitRocker2</a> （テキスト形式）</li>
+              <li><a href="https://play.google.com/store/apps/details?id=jp.r246.twicca">twicca</a></li>
+              <li><a href="https://play.google.com/store/apps/details?id=jp.hamsoft.hamoooooon">はむーん</a></li>
+              <li><a href="https://play.google.com/store/apps/details?id=com.thedeck.android.app">TweetDeck</a></li>
+              <li><a href="https://play.google.com/store/apps/details?id=com.levelup.touiteur">Plume</a></li>
+            </ul>
+          </li>
+          <li>マルチスレッドで放流</li>
+          <li>Twitterのエラーを無視</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>スクリーンショット</h2>
+        <ul class="thumbnails">
+          <li class="span2"><a href="img/ss1.png" class="thumbnail"><img src="img/ss1.png" alt="メイン画面"></a></li>
+          <li class="span2"><a href="img/ss2.png" class="thumbnail"><img src="img/ss2.png" alt="同時実行数設定"></a></li>
+          <li class="span2"><a href="img/ss3.png" class="thumbnail"><img src="img/ss3.png" alt="エラー無視設定"></a></li>
+          <li class="span2"><a href="img/ss4.png" class="thumbnail"><img src="img/ss4.png" alt="通知"></a></li>
+          <li class="span2"><a href="img/ss5.png" class="thumbnail"><img src="img/ss5.png" alt="共有から追加"></a></li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2>使用したライブラリ等</h2>
+        <ul>
+          <li><a href="http://twitter4j.org/">Twitter4J</a></li>
+          <li><a href="http://android-ui-utils.googlecode.com/hg/asset-studio/dist/index.html">Android Asset Studio</a></li>
+        </ul>
+      </section>
+      
+      <a id="download"><!--aタグのスタイル回避--></a>
+      <section>
+        <h2>ダウンロード</h2>
+        <p><a class="btn" href="https://play.google.com/store/apps/details?id=net.azyobuzi.fallfavo">Google Play &raquo;</a></p>
+      </section>
+      
+      <section>
+        <h2>ソースコード</h2>
+        <p><a class="btn" href="https://github.com/azyobuzin/FallFavo">GitHub &raquo;</a></p>
       </section>
     </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Fallfavo maintained by <a href="https://github.com/azyobuzin">azyobuzin</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
     
-
+    <script src="bootstrap/js/jquery.js" type="text/javascript"></script>
+    <script src="bootstrap/js/bootstrap.js" type="text/javascript"></script>
   </body>
 </html>

@@ -20,7 +20,7 @@ public class AddActivity extends SherlockActivity {
 	private static Pattern twitRockerPattern = Pattern.compile("^(.+)\n\n.+ / @([A-Za-z0-9_]+)\n\n\\d+/\\d+/\\d+ \\d+:\\d+:\\d+\n\nhttps://twitter\\.com/[A-Za-z0-9_]+/status/(\\d+)$", Pattern.DOTALL);
 
 	//twicca ツイートを共有する
-	private static Pattern twiccaPattern = Pattern.compile("^([A-Za-z0-9_]+)\n\n(.+)\n\n\\d+月\\d+日 \\d+時\\d+分 .+から\nhttp://twitter\\.com/[A-Za-z0-9_]+/status/(\\d+)$", Pattern.DOTALL);
+	private static Pattern twiccaPattern = Pattern.compile("^([A-Za-z0-9_]+) \\([^\\r\\n]+\\)\n\n(.+)\n\n\\d+月\\d+日 \\d+時\\d+分 .+から\nhttp://twitter\\.com/[A-Za-z0-9_]+/status/(\\d+)$", Pattern.DOTALL);
 
 	//Hamoooooon 共有
 	private static Pattern hamoooooonPattern = Pattern.compile("^(.+)\n\nhttp://twitter\\.com/#!/([A-Za-z0-9_]+)/status/(\\d+)$", Pattern.DOTALL);
